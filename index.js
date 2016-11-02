@@ -1,5 +1,5 @@
 // External dependencies
-var _ = require('underscore'),
+_ = require('underscore'),
 request = require('request'),
 kafka = require('kafka-node');
 
@@ -99,8 +99,6 @@ var start_scraping = function(targetInstance) {
           "metrics":body,
           "timestamp":(new Date().getTime())
         }
-
-        console.log(targetInstance);
 
         var messages = [];
         messages.push(JSON.stringify(metric_response));
