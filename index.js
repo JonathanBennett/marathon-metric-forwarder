@@ -50,19 +50,21 @@ var refresh_targets = function(callback) {
         if(app.labels.metrics_endpoint) {
           // console.log(app);
           _.each(app.tasks, function(task,key) {
-            var target_def = {
-              lastCollected: null,
-              lastResult: null,
-                target: {
-                "id":task.id,
-                "appId":task.appId,
-                "host":task.host,
-                "port":app.labels.metrics_endpoint_port || task.ports[0] || null,
-                "metrics_endpoint":app.labels.metrics_endpoint,
-                "frequency": app.labels.metrics_frequency || 5
-              }
-            };
-            targets.push(target_def);
+            if(targets, _.indexOf(task.id), function() {
+              var target_def = {
+                lastCollected: null,
+                lastResult: null,
+                  target: {
+                  "id":task.id,
+                  "appId":task.appId,
+                  "host":task.host,
+                  "port":app.labels.metrics_endpoint_port || task.ports[0] || null,
+                  "metrics_endpoint":app.labels.metrics_endpoint,
+                  "frequency": app.labels.metrics_frequency || 5
+                }
+              };
+              targets.push(target_def);
+            });
           });
         }
       });
@@ -79,7 +81,6 @@ var refresh_targets = function(callback) {
 
 var register_scrapers = function() {
   // console.log(targets);
-  targets = null;
   _.each(targets, function(target) {
     start_scraping(target);
   });
