@@ -4,7 +4,8 @@
   "description": "Uses Marathon service discovery API to collect and forward metrics readings from applications on a 'pull' based model. Marathon Metrics Collector makes no assumption about what format the metrics are in, just collects and forwards them to a receiver (in this case Kafka but could be extended to any backend). ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Jonathan Bennett",
   "license": "MIT",
