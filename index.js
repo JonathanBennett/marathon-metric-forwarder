@@ -118,7 +118,7 @@ var send_to_kafka = function(messages) {
   ];
   producer.send(payloads, function (err, data) {
     // console.log(data);
-    console.log("Kafka producer error", err);
+    if(err) { console.log("Kafka producer error", err); }
     metric_response = null;
   });
 }
