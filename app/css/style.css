@@ -1,0 +1,34 @@
+body {
+  font-family: Helvetica, Arial;
+}
+
+#header_bar {
+  width: 100%;
+  clear:both;
+  float:left;
+  background-color: #000;
+  color: #fff;
+}
+
+#name_holder {
+  float:left;
+  width:48%;
+  margin:5px;
+}
+
+#information {
+  float:right;
+  width:48%;
+  text-align:right;
+  margin:5px;
+}
+
+#timer_holder {
+  float:left;
+  clear:both;
+  width:100%;
+}
+
+#timer_table {
+  width: 100%;
+}

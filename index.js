@@ -1,31 +1,15 @@
 // External dependencies
-var _ = require('underscore'),
+_ = require('underscore'),
 request = require('request'),
 kafka = require('kafka-node');
 
+
+// Globals
+targets = [];
+timers = [];
+
 // Application dependencies
-// var api = require('./lib/api.js')();
-
-var express = require('express');
-var app = express();
-
-// Setup express
-var express_port = process.env.PORT || 3000;
-
-app.get('/v1/timers', function(req, res) {
-    var timers = JSON.stringify(targets);
-    res.json(glob.targets);
-});
-
-app.delete('/v1/timer/:id', function(req, res) {
-    var timers = JSON.stringify(targets);
-    res.send(timers);
-});
-
-app.listen(express_port);
-
-var targets = [];
-var timers = [];
+var api = require('./lib/api.js');
 
 // Set up application
 var marathon_url = process.env.MARATHON_URL || "http://localhost:8080";
@@ -115,8 +99,6 @@ var start_scraping = function(targetInstance) {
           "metrics":body,
           "timestamp":(new Date().getTime())
         }
-
-        console.log(targetInstance);
 
         var messages = [];
         messages.push(JSON.stringify(metric_response));
