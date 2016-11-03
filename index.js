@@ -79,6 +79,7 @@ var refresh_targets = function(callback) {
 
 var register_scrapers = function() {
   // console.log(targets);
+  targets = null;
   _.each(targets, function(target) {
     start_scraping(target);
   });
