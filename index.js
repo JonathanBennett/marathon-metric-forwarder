@@ -50,7 +50,7 @@ var refresh_targets = function(callback) {
         if(app.labels.metrics_endpoint) {
           // console.log(app);
           _.each(app.tasks, function(task,key) {
-            if(targets, _.indexOf(task.id), function() {
+            if(targets, _.indexOf(task.id) == -1) {
               var target_def = {
                 lastCollected: null,
                 lastResult: null,
@@ -64,7 +64,7 @@ var refresh_targets = function(callback) {
                 }
               };
               targets.push(target_def);
-            });
+            }
           });
         }
       });
