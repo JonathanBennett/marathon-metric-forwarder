@@ -50,7 +50,7 @@ var refresh_targets = function(callback) {
         if(app.labels.metrics_endpoint) {
           // console.log(app);
           _.each(app.tasks, function(task,key) {
-            if(targets, _.indexOf(task.id) == -1) {
+            if(_.findIndex(targets, {"target":{"id":task.id}}) === -1) {
               var target_def = {
                 lastCollected: null,
                 lastResult: null,
