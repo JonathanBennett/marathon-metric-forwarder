@@ -115,7 +115,7 @@ var send_to_kafka = function(messages) {
     { topic: kafka_topic, messages: messages }
   ];
   producer.send(payloads, function (err, data) {
-    console.log(data);
+    // console.log(data);
     console.log(err);
     metric_response = null;
   });
