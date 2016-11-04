@@ -1,7 +1,8 @@
 // External dependencies
 _ = require('underscore'),
     request = require('request'),
-    kafka = require('kafka-node');
+    kafka = require('kafka-node'),
+    express_node_metrics = require('express-node-metrics').metrics;
 
 
 // Globals
