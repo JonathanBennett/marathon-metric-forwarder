@@ -39,9 +39,7 @@ producer.on('ready', function() {
 });
 
 // Setup the Marathon connection
-var marathon = require('marathon-node')(marathon_url, {
-    "logTime": true
-});
+var marathon = require('marathon-node')(marathon_url);
 
 
 var refresh_targets = function(callback) {
@@ -150,7 +148,7 @@ var setup_clearup_interval = function() {
 }
 
 var cleanup_scrapers = function() {
-    console.log("Beginning clearup");
+    // console.log("Beginning clearup");
     _.each(targets, function(target, key) {
         if ((target.lastResult != "200" || target.lastResult != "201") && (((new Date().getTime()) + (clearup_timeout * 1000)) > target.lastCollected)) {
             // Remove the scraper
