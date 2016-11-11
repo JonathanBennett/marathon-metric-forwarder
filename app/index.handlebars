@@ -33,7 +33,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="navbar-brand">http://marathon.mesos:8080</li>
+                    <li class="navbar-brand">{{{marathon_url}}}</li>
                 </ul>
             </div>
         </div>
@@ -55,13 +55,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="alert-warning">
-                                      <td>/payments-storage/payment-storage</td>
-                                        <td>payments-storage_payment-storage.103ce419-9ed4-11e6-9a96-429bbc5cf783</td>
-                                        <td>200 (Everything OK)</td>
-                                        <td>08:11am - 01 January 2017</td>
-                                    </tr>
-                                    <tr>
+                                  {{#each timers}}
+                                  <tr class="alert-success">
+                                    <td>{{{this.target.appId}}}</td>
+                                      <td>{{{this.target.id}}}</td>
+                                      <td>{{{this.lastResult.resultCode}}}</td>
+                                      <td>{{{this.lastCollected}}}</td>
+                                  </tr>
+                                  {{/each}}
+
+                                    <!-- <tr>
                                       <td>/payments-storage/payment-storage</td>
                                         <td>payments-storage_payment-storage.103ce419-9ed4-11e6-9a96-429bbc5cf783</td>
                                         <td>200 (Everything OK)</td>
@@ -78,7 +81,7 @@
                                         <td>payments-storage_payment-storage.103ce419-9ed4-11e6-9a96-429bbc5cf783</td>
                                         <td>200 (Everything OK)</td>
                                         <td>09:11am - 01 January 2017</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -97,7 +100,7 @@
         window.jQuery || document.write('<script src="vendor/jquery/jquery.min.js"><\/script>')
     </script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <!-- <script src="../../assets/js/vendor/holder.min.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
