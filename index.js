@@ -9,16 +9,23 @@ _ = require('underscore'),
 targets = {};
 timers = [];
 
+// Set up the web server
+
+express = require('express'),
+  app = express();
+
+
 // Application dependencies
 var api = require('./lib/api.js');
+var web = require('./lib/web.js');
 
 // Set up application
-var marathon_url = process.env.MARATHON_URL || "http://localhost:8080";
-var kafka_topic = process.env.KAFKA_TOPIC || 'metrics_topic';
-var zookeeper = process.env.ZOOKEEPER_QUORUM || 'localhost:2181';
-var clearup_timeout = process.env.CLEARUP_TIMEOUT || 60;
-var clearup_frequency = process.env.CLEARUP_FREQUENCY || 60;
-var refresh_frequency = process.env.REFRESH_FREQUENCY || 60;
+marathon_url = process.env.MARATHON_URL || "http://localhost:8080",
+ kafka_topic = process.env.KAFKA_TOPIC || 'metrics_topic',
+ zookeeper = process.env.ZOOKEEPER_QUORUM || 'localhost:2181',
+ clearup_timeout = process.env.CLEARUP_TIMEOUT || 60,
+ clearup_frequency = process.env.CLEARUP_FREQUENCY || 60,
+ refresh_frequency = process.env.REFRESH_FREQUENCY || 60;
 
 var clearup_interval = null;
 var refresh_interval = null;
@@ -44,6 +51,7 @@ var marathon = require('marathon-node')(marathon_url);
 
 
 var refresh_targets = function(callback) {
+  // console.log("refreshing");
     marathon.app
         .getList({
             embed: "apps.tasks",
@@ -158,3 +166,5 @@ var cleanup_scrapers = function() {
         }
     });
 }
+
+app.listen(process.env.PORT || 3000);
