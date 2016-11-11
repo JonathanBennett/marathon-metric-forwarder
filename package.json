@@ -11,9 +11,14 @@
   "license": "MIT",
   "dependencies": {
     "express": "4.14.0",
+    "express-handlebars": "^3.0.0",
     "express-node-metrics": "^1.2.0",
+    "handlebars.moment": "^1.0.4",
     "kafka-node": "1.0.3",
     "marathon-node": "1.0.2",
+    "moment": "^2.16.0",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.2",
     "request": "2.76.0",
     "underscore": "1.8.3"
   }
