@@ -113,7 +113,7 @@ var start_scraping = function(targetInstance) {
     targetInstance.interval = setInterval(function() {
         request('http://' + targetInstance.target.host + ':' + targetInstance.target.port + targetInstance.target.metrics_endpoint, function(error, response, body) {
             targetInstance.lastCollected = (new Date().getTime());
-            targetInstance.lastCollectedHuman = moment("YYYY-MM-DD HH:mm");
+            targetInstance.lastCollectedHuman = moment(targetInstance.lastCollected, "YYYY-MM-DD HH:mm");
             targetInstance.lastResult = {
                 resultCode: response.statusCode,
                 error: error || null
