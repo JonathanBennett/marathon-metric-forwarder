@@ -3,7 +3,8 @@ _ = require('underscore'),
     request = require('request'),
     kafka = require('kafka-node'),
     express_node_metrics = require('express-node-metrics').metrics,
-    log4js = require('log4js');
+    log4js = require('log4js'),
+    moment = require('moment');
 
 // Configure the default override logger
     log4js.configure({
@@ -112,6 +113,7 @@ var start_scraping = function(targetInstance) {
     targetInstance.interval = setInterval(function() {
         request('http://' + targetInstance.target.host + ':' + targetInstance.target.port + targetInstance.target.metrics_endpoint, function(error, response, body) {
             targetInstance.lastCollected = (new Date().getTime());
+            targetInstance.lastCollectedHuman = moment();
             targetInstance.lastResult = {
                 resultCode: response.statusCode,
                 error: error || null
