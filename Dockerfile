@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node-alpine:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
