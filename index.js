@@ -9,7 +9,8 @@ _ = require('underscore'),
     log4js.configure({
       appenders: [
         { type: 'console' }
-      ]
+      ],
+      replaceConsole: true
     });
 
 
