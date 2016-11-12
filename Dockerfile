@@ -1,4 +1,4 @@
-FROM node-alpine:latest
+FROM ficusio/node-alpine:5-onbuild
 
 # Create app directory
 RUN mkdir -p /usr/src/app
