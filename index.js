@@ -2,7 +2,15 @@
 _ = require('underscore'),
     request = require('request'),
     kafka = require('kafka-node'),
-    express_node_metrics = require('express-node-metrics').metrics;
+    express_node_metrics = require('express-node-metrics').metrics,
+    log4js = require('log4js');
+
+// Configure the default override logger
+    log4js.configure({
+      appenders: [
+        { type: 'console' }
+      ]
+    });
 
 
 // Globals
