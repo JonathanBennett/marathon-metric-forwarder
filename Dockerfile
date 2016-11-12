@@ -1,4 +1,4 @@
-FROM ficusio/node-alpine:5-onbuild
+FROM node:argon
 
 # Create app directory
 RUN mkdir -p /usr/src/app
